@@ -1,12 +1,42 @@
 // TODO: Declare any global variables we need
-
-
+let heads = 0
+let tails = 0
+let percentageHeads = 0
+let percentageHails = 0
+let totalFlips = heads + tails
+const tailImage = 'assets/images/penny-tails.jpg'
+const headsImage = 'assets/images/penny-heads.jpg'
 document.addEventListener('DOMContentLoaded', function () {
     // This is just a sanity check to make sure your JavaScript script is getting loaded
     // You can remove it once you see it in your browser console in the developer tools
-    console.log('Hi')
+    
 
-    // TODO: Add event listener and handler for flip and clear buttons
+    let button = document.querySelector('#flip')
+    button.addEventListener('click', function(){
+        
+        let coinHeads = Math.random() < 0.5
+        
+        if (coinHeads){
+            heads++;
+            totalFlips++
+            document.getElementById('message').textContent = 'You Flipped Heads'
+            const img = document.querySelector("img"); 
+            img.src = headsImage;
+        }else{
+            tails++;
+            totalFlips++
+            document.getElementById('message').textContent = 'You Flipped Tails'
+            const img = document.querySelector("img"); 
+            img.src = tailImage;
+        }
+    })
+
+    let clear = document.querySelector('#clear')
+    clear.addEventListener('click', function(){
+       // clear.textContent = 'it worked too'
+    })
+
+    // // TODO: Add event listener and handler for flip and clear buttons
 
     // Flip Button Click Handler
         // TODO: Determine flip outcome
