@@ -2,56 +2,52 @@
 let heads = 0
 let tails = 0
 let percentageHeads = 0
-let percentageHails = 0
+let percentageTails = 0
 let totalFlips = heads + tails
 const tailImage = 'assets/images/penny-tails.jpg'
 const headsImage = 'assets/images/penny-heads.jpg'
+const img = document.querySelector("img") 
+
 document.addEventListener('DOMContentLoaded', function () {
-    // This is just a sanity check to make sure your JavaScript script is getting loaded
-    // You can remove it once you see it in your browser console in the developer tools
+
     
 
     let button = document.querySelector('#flip')
     button.addEventListener('click', function(){
         
         let coinHeads = Math.random() < 0.5
-        
+        totalFlips++
+
+
         if (coinHeads){
-            heads++;
-            totalFlips++
+            heads++
+        
             document.getElementById('message').textContent = 'You Flipped Heads'
-            const img = document.querySelector("img"); 
-            img.src = headsImage;
+            img.src = headsImage
+            document.getElementById('heads').textContent = heads
+
         }else{
-            tails++;
-            totalFlips++
-            document.getElementById('message').textContent = 'You Flipped Tails'
-            const img = document.querySelector("img"); 
-            img.src = tailImage;
+            tails++
+            document.getElementById('message').textContent = 'You Flipped Tails' 
+            img.src = tailImage
+            document.getElementById('tails').textContent = tails
+            
         }
+
+        percentageHeads = Math.round(heads/totalFlips*100)
+        percentageTails = Math.round(tails/totalFlips*100)
+        document.getElementById('heads-percent').textContent = percentageHeads
+        document.getElementById('tails-percent').textContent = percentageTails
+
     })
 
     let clear = document.querySelector('#clear')
     clear.addEventListener('click', function(){
-       // clear.textContent = 'it worked too'
+        document.getElementById('message').textContent = "Let's Get Rolling!"
+      
     })
 
-    // // TODO: Add event listener and handler for flip and clear buttons
+  
 
-    // Flip Button Click Handler
-        // TODO: Determine flip outcome
-        // TODO: Update image and status message in the DOM
-
-        // Update the scorboard
-        // TODO: Calculate the total number of rolls/flips
-        // Make variables to track the percentages of heads and tails
-        // TODO: Use the calculated total to calculate the percentages
-        // HINT: Make sure not to divide by 0! (if total is 0, percent will be 0 as well)
-        // TODO: Update the display of each table cell
-
-
-    // Clear Button Click Handler
-        // TODO: Reset global variables to 0
-        // TODO: Update the scoreboard (same logic as in flip button click handler)
 
 })
